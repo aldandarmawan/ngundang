@@ -1,8 +1,10 @@
 ---
 import "@fontsource-variable/alegreya";
 import "@fontsource/great-vibes";
-import "../styles/global.css"
+import "../styles/global.css";
 const { title } = Astro.props;
+
+import BG from "../assets/bg.gif";
 ---
 
 <!doctype html>
@@ -14,7 +16,62 @@ const { title } = Astro.props;
 		<!-- <meta name="generator"  /> -->
 		<title>{title}</title>
 	</head>
-	<body >
+	<body>
+		<div id="falling-leaf"></div>
 		<slot />
 	</body>
+	<script>
+		import BG from "../assets/bg.gif";
+		const randWidth = () => {
+				return Math.random() * 64 + 32;
+			},
+			randPos = () => {
+				return `${Math.random() * 90}vw`;
+			},
+			randRot = () => {
+				return Math.random() * 360;
+			},
+			randOp = () => {
+				return (Math.random() * 0.8) + 0.2;
+			};
+		import { gsap } from "gsap";
+		let bgTl = gsap.timeline({
+			repeat: -1,
+			repeatDelay: 0,
+			// repeatRefresh: true,
+		});
+
+		const viewportWidth = window.innerWidth;
+		let maxLeaves = viewportWidth / 50;
+		let numLeaves = Math.round(
+			(0.3 * maxLeaves) + (0.7 * maxLeaves * Math.random())
+		);
+		console.log('num of Tpkboe', numLeaves, maxLeaves)
+		// for (let i = 0; i < (Math.round(Math.random() * 6) + 4); i++) {
+		for (let i = 0; i < numLeaves; i++) {
+			let _el = document.getElementById("falling-leaf");
+			let _im = document.createElement("img");
+			_im.setAttribute("src", BG.src);
+			_im.setAttribute("class", "falling-leaf");
+			_im.setAttribute("id", `falling-leaf-${i}`);
+			_el?.appendChild(_im);
+			let width = randWidth(),
+				x = randPos(),
+				op = randOp();
+			bgTl.fromTo(
+				`#falling-leaf-${i}`,
+				{ width: width, x: x, y: -100, opacity: op, rotate: randRot() },
+				{
+					duration: 2 + Math.random() * 5,
+					ease: "none",
+					width: width,
+					x: x,
+					y: "100vh",
+					opacity: op,
+					rotate: randRot(),
+				},
+				Math.random() * 15,
+			);
+		}
+	</script>
 </html>

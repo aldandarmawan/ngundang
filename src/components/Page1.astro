@@ -4,14 +4,27 @@ import Ornament1 from "../assets/ornament-1.gif";
 import Ornament2 from "../assets/ornament-2.gif";
 ---
 
+<style>
+    #textURInvited {
+        transform: translate(0, 198.5px);
+        opacity: 0;
+    }
+    #btnOpenInvitation {
+              transform: translate(0, -198.5px);
+        opacity: 0;
+    }
+
+</style>
+
 <div class="h-screen w-full flex items-center justify-center">
     <div>
-        <h1 class="text-lg text-center mb-20">YOU ARE INVITED TO</h1>
-        <div class="flex items-center justify-center relative w-64">
+        <h1 class="text-lg text-center mb-20 z-0" id="textURInvited">YOU ARE INVITED TO</h1>
+        <div class="flex items-center justify-center relative w-64 z-100">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 216 200"
                 class="fill-quinary"
+                id="svgRoundBg"
             >
                 <path
                     d="M172.979 19.611C191.285 33.0858 204.505 54.442 210.861 78.5949C217.471 103.002 217.471 130.46 205.776 151.816C194.335 173.427 171.454 189.444 147.047 196.054C122.639 202.919 96.7069 200.631 75.3506 190.715C54.2486 180.546 37.7229 163.003 23.4855 142.155C9.5022 121.307 -2.19289 97.4087 0.349524 74.7813C3.14617 52.1538 19.9261 30.7976 40.2654 17.8313C60.6046 4.61077 84.5033 -0.474048 108.148 0.0344341C131.538 0.542916 154.928 6.13621 172.979 19.611Z"
@@ -31,16 +44,24 @@ import Ornament2 from "../assets/ornament-2.gif";
                 src={Ornament2}
                 alt="ornament-2"
                 class="absolute -top-4 -right-4 w-1/2"
+                id="imgOrnament2"
             />
             <div class="absolute top-40 flex justify-center">
-                <Image src={Ornament1} alt="ornament-1" class="w-7/8" />
+                <Image src={Ornament1} alt="ornament-1" class="w-7/8" id="imgOrnament1" />
             </div>
         </div>
 
-        <div class="flex justify-center mt-20">
-            <button class="border border-primary border-solid p-1/2 cursor-pointer w-full">
+        <div class="flex justify-center mt-20 z-0">
+            <button class="border border-primary border-solid p-1/2 cursor-pointer w-full" id="btnOpenInvitation">
                 OPEN INVITATION
             </button>
         </div>
     </div>
 </div>
+
+<script>
+    import { gsap } from "gsap";
+    let tl = gsap.timeline();
+    tl.to("#textURInvited", { y: 0, opacity: 1, duration: 2 });
+    tl.to("#btnOpenInvitation", { y: 0, opacity: 1, duration: 2 });
+</script>
