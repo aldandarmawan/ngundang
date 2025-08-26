@@ -58,7 +58,7 @@ import BG from "../assets/bg.gif";
 				op = randOp();
 			bgTl.fromTo(
 				`#falling-leaf-${i}`,
-				{ width: width, x: x, y: -100, opacity: op, rotate: randRot() },
+				{ width: width, x: x, y: -100, opacity: op, rotation: randRot() },
 				{
 					duration: 2 + Math.random() * 5,
 					ease: "none",
@@ -66,7 +66,7 @@ import BG from "../assets/bg.gif";
 					x: x,
 					y: "100vh",
 					opacity: op,
-					rotate: randRot(),
+					rotation: randRot(),
 				},
 				Math.random() * 15,
 			);
