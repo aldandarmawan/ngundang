@@ -1,3 +1,48 @@
-<div class="h-screen w-full">
-    <p>You are the gyattrox</p>
+---
+import { Image } from "astro:assets";
+import Ornament3 from "../assets/ornament-3.gif";
+import Ornament4 from "../assets/ornament-4.gif";
+
+import Ornament1 from "../assets/ornament-1.gif";
+---
+<div class="h-screen w-full flex items-center justify-center">
+    <div class="flex items-center justify-center relative w-80 z-100">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 204 192"
+            class="fill-quinary rotate-270"
+            preserveAspectRatio="none"
+        >
+            <path
+                d="M195.507 15.5715C206.818 33.1668 193.622 69.3001 190.166 101.663C186.71 134.34 193.308 163.561 181.996 178.014C170.685 192.153 141.464 191.525 114.443 189.326C87.1072 187.44 62.2852 183.67 40.6052 169.531C19.2395 155.077 1.6441 130.255 0.0730908 103.862C-1.18372 77.4694 13.898 49.5054 35.2638 31.91C56.6296 14.0004 84.5936 6.45958 116.328 2.37494C148.063 -1.70969 184.196 -2.3381 195.507 15.5715Z"
+                transform="scale(1.016385141, 1.0)"
+            ></path>
+        </svg>
+        <div class="absolute w-9/12 text-center">
+            <p class="text-base/5">
+                Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
+            </p>
+            <h6 class="font-bold">(Q.S. Ar-Rum: 21)</h6>
+        </div>
+        <div class="absolute -top-9 flex justify-center">
+            <!-- <div class="relative"> -->
+                <Image
+                    src={Ornament4}
+                    alt="ornament-4"
+                    class="w-9/25 "
+                    style="transform: translate(16px, 0)"
+                />
+                <Image
+                    src={Ornament3}
+                    alt="ornament-3"
+                    class="w-9/25"  
+                    style="transform: translate(-16px, 0)"
+                />
+            <!-- </div> -->
+        </div>
+        <div class="absolute top-62 flex justify-center">
+            <Image src={Ornament1} alt="ornament-1" class="w-7/10" />
+        </div>
+    </div>
 </div>
