@@ -3,10 +3,10 @@ import { Image } from "astro:assets";
 import Salam from "../assets/salam.svg";
 ---
 
-<div class="h-screen w-full flex items-center justify-center">
+<div class="h-screen w-full flex items-center justify-center overflow-hidden">
     <div class="w-5/6">
-        <Image src={Salam} alt="assalamu'alaikum" class="-mb-5"/>
-        <p class="text-xl text-center">
+        <Image src={Salam} alt="assalamu'alaikum" class="-mb-5 max-h-45"/>
+        <p class="text-lg/5 text-center">
             Tanpa mengurangi rasa hormat,<br>
             turut mengundang<br>
             Bapak/Ibu/Saudara/i ke acara<br>
@@ -14,12 +14,12 @@ import Salam from "../assets/salam.svg";
         </p>
         <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4">Julia Krisna,&nbsp;S.T.</h1>
         <h6 class="text-xl font-bold text-center">putri kedua dari</h6>
-        <p class="text-xl text-center">
+        <p class="text-lg text-center">
             Bapak&nbsp;Gatot&nbsp;Alibasa,&nbsp;S.E. dan Ibu&nbsp;Suharyati,&nbsp;S.Pd.  
         </p>
         <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4">Muhammad Aldan Ihsan&nbsp;Darmawan,&nbsp;S.T.</h1>
         <h6 class="text-xl font-bold text-center">putra pertama dari</h6>
-        <p class="text-xl text-center">
+        <p class="text-lg text-center">
             Bapak&nbsp;Daniel&nbsp;Hermansyah,&nbsp;S.H.,&nbsp;M.Si. dan Ibu&nbsp;Dra.&nbsp;Linda&nbsp;Rita  
         </p>
     </div>
