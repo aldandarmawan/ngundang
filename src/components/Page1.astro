@@ -4,7 +4,7 @@ import Ornament1 from "../assets/ornament-1.gif";
 import Ornament2 from "../assets/ornament-2.gif";
 ---
 
-<div id="Page1" class="h-screen w-full flex items-center justify-center overflow-hidden">
+<section id="Page1" class="h-screen w-full flex items-center justify-center overflow-hidden section">
     <div>
         <h1 class="text-lg text-center mb-20 z-0" id="textURInvited">YOU ARE INVITED TO</h1>
         <div class="flex items-center justify-center relative w-64 z-100">
@@ -45,16 +45,22 @@ import Ornament2 from "../assets/ornament-2.gif";
             </button>
         </div>
     </div>
-</div>
+</section>
 
 <script>
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+    
     gsap.registerPlugin(ScrollTrigger);
+
     let tl = gsap.timeline({
         scrollTrigger: {
             trigger: "#Page1",
             toggleActions: "play pause resume reset",
+            // pin: true,
+            // pinType: "transform",
+            // markers: true,
         }
     });
     tl.fromTo("#svgRoundBg", {opacity: 0}, { opacity: 1, duration: 5 }, 0);

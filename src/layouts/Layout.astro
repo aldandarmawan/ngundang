@@ -3,8 +3,6 @@ import "@fontsource-variable/alegreya";
 import "@fontsource/great-vibes";
 import "../styles/global.css";
 const { title } = Astro.props;
-
-import BG from "../assets/bg.gif";
 ---
 
 <!doctype html>
@@ -18,8 +16,96 @@ import BG from "../assets/bg.gif";
 	</head>
 	<body>
 		<div id="falling-leaf"></div>
-		<slot />
+		<div class="ngundang-container">
+			<slot />
+		</div>
 	</body>
+	<script>
+		import { gsap } from "gsap";
+		import { ScrollTrigger } from "gsap/ScrollTrigger";
+		import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+		gsap.registerPlugin(ScrollTrigger);
+		gsap.registerPlugin(ScrollToPlugin);
+
+		let sections = document.querySelectorAll(".section");
+		let scrollAmount = window.innerHeight;
+
+		function scrollToPage(pageIndex: number) {
+			let _sect = sections[pageIndex] as any;
+			gsap.to(window, {
+				scrollTo: {
+					y: _sect.offsetTop,
+					autoKill: false,
+				},
+				ease: "power2.inOut",
+				duration: 2,
+			});
+		}
+
+		const currentScrollTop = window.pageYOffset;
+		let currentPage = Math.floor(currentScrollTop / scrollAmount);
+		let lastScrollTime = 0;
+
+		window.addEventListener("wheel", (ev) => {
+			if (
+				!(
+					ev.ctrlKey === false &&
+					ev.altKey === false &&
+					ev.shiftKey === false
+				)
+			) {
+				ev.preventDefault();
+				return;
+			}
+			const currentTime = Date.now();
+
+			if (currentTime - lastScrollTime < 500) return;
+			lastScrollTime = currentTime;
+
+			// Scroll down
+			if (ev.deltaY > 0 && currentPage < sections.length - 1) {
+				scrollToPage(++currentPage);
+			}
+
+			// Scroll up
+			if (!(ev.deltaY > 0) && currentPage > 0) {
+				scrollToPage(--currentPage);
+			}
+
+		});
+
+		let touchStartY = 0,
+			touchEndY = 0;
+		window.addEventListener("touchstart", (ev) => {
+			touchStartY = ev.touches[0].clientY;
+		});
+
+		window.addEventListener("touchend", (ev) => {
+			touchEndY = ev.changedTouches[0].clientY;
+
+			if (!(Math.abs(touchEndY - touchStartY) > 50)) {
+				return;
+			}
+
+			let deltaY = touchStartY - touchEndY;
+			// Scroll down
+			if (deltaY > 0 && currentPage < sections.length - 1) {
+				scrollToPage(++currentPage);
+			}
+
+			// Scroll up
+			if (!(deltaY > 0) && currentPage > 0) {
+				scrollToPage(--currentPage);
+			}
+		});
+
+		const btnOpenInvitation = document.querySelector("#btnOpenInvitation");
+		btnOpenInvitation?.addEventListener("click", () => {
+			currentPage = 1;
+			scrollToPage(currentPage);
+		});
+	</script>
 	<script>
 		import BG from "../assets/bg.gif";
 		const randWidth = () => {
@@ -32,7 +118,7 @@ import BG from "../assets/bg.gif";
 				return Math.random() * 360;
 			},
 			randOp = () => {
-				return (Math.random() * 0.8) + 0.2;
+				return Math.random() * 0.8 + 0.2;
 			};
 		import { gsap } from "gsap";
 		let bgTl = gsap.timeline({
@@ -44,7 +130,7 @@ import BG from "../assets/bg.gif";
 		const viewportWidth = window.innerWidth;
 		let maxLeaves = viewportWidth / 50;
 		let numLeaves = Math.round(
-			(0.3 * maxLeaves) + (0.7 * maxLeaves * Math.random())
+			0.3 * maxLeaves + 0.7 * maxLeaves * Math.random(),
 		);
 		for (let i = 0; i < numLeaves; i++) {
 			let _el = document.getElementById("falling-leaf");
@@ -58,7 +144,13 @@ import BG from "../assets/bg.gif";
 				op = randOp();
 			bgTl.fromTo(
 				`#falling-leaf-${i}`,
-				{ width: width, x: x, y: -100, opacity: op, rotation: randRot() },
+				{
+					width: width,
+					x: x,
+					y: -100,
+					opacity: op,
+					rotation: randRot(),
+				},
 				{
 					duration: 2 + Math.random() * 5,
 					ease: "none",
