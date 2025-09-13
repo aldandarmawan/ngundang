@@ -1,27 +1,134 @@
 ---
 import { Image } from "astro:assets";
 import Salam from "../assets/salam.svg";
+
+import Ornament5A from "../assets/ornament-5a.gif";
+import Ornament5B from "../assets/ornament-5b.gif";
+import Ornament6 from "../assets/ornament-6.gif";
 ---
 
 
-<section id="Page3" class="h-screen w-full flex items-center justify-center overflow-hidden section">
-    <div class="w-5/6">
-        <Image src={Salam} alt="assalamu'alaikum" class="-mb-5 max-h-45"/>
-        <p class="text-lg/5 text-center">
-            Tanpa mengurangi rasa hormat,<br>
-            turut mengundang<br>
-            Bapak/Ibu/Saudara/i ke acara<br>
-            pernikahan kami.
-        </p>
-        <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4">Julia Krisna,&nbsp;S.T.</h1>
-        <h6 class="text-xl font-bold text-center">putri kedua dari</h6>
-        <p class="text-lg text-center">
-            Bapak&nbsp;Gatot&nbsp;Alibasa,&nbsp;S.E. dan Ibu&nbsp;Suharyati,&nbsp;S.Pd.  
-        </p>
-        <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4">Muhammad Aldan Ihsan&nbsp;Darmawan,&nbsp;S.T.</h1>
-        <h6 class="text-xl font-bold text-center">putra pertama dari</h6>
-        <p class="text-lg text-center">
-            Bapak&nbsp;Daniel&nbsp;Hermansyah,&nbsp;S.H.,&nbsp;M.Si. dan Ibu&nbsp;Dra.&nbsp;Linda&nbsp;Rita  
-        </p>
+<section id="Page3" class="h-screen w-full flex justify-center overflow-hidden section">
+    <div class="w-xl relative flex items-center">
+        <Image
+            src={Ornament5A}
+            alt="ornament-5a"
+            class="absolute -z-999 w-14/25 -right-4 top-2"
+            id="imgOrnament5A"
+        />
+
+        <Image
+            src={Ornament5B}
+            alt="ornament-5b"
+            class="absolute -z-999 w-14/25 -left-4 -bottom-2"
+            id="imgOrnament5B"
+        />
+
+        <Image
+            src={Ornament6}
+            alt="ornament-6"
+            class="absolute -z-999 w-6/25 right-4 bottom-7"
+            id="imgOrnament6"
+        />
+        <div class="max-w-5/6 mx-auto">
+            <Image src={Salam} alt="assalamu'alaikum" class="-mb-5 max-h-45 page3Content"/>
+            <p class="text-lg/5 text-center page3Content">
+                Tanpa mengurangi rasa hormat,<br>
+                turut mengundang<br>
+                Bapak/Ibu/Saudara/i ke acara<br>
+                pernikahan kami.
+            </p>
+            <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4 page3Content">Julia Krisna,&nbsp;S.T.</h1>
+            <h6 class="text-xl font-bold text-center page3Content">putri kedua dari</h6>
+            <p class="text-lg text-center page3Content">
+                Bapak&nbsp;Gatot&nbsp;Alibasa,&nbsp;S.E. dan Ibu&nbsp;Suharyati,&nbsp;S.Pd.  
+            </p>
+            <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4 page3Content">Muhammad Aldan Ihsan&nbsp;Darmawan,&nbsp;S.T.</h1>
+            <h6 class="text-xl font-bold text-center page3Content">putra pertama dari</h6>
+            <p class="text-lg text-center page3Content">
+                Bapak&nbsp;Daniel&nbsp;Hermansyah,&nbsp;S.H.,&nbsp;M.Si. dan Ibu&nbsp;Dra.&nbsp;Linda&nbsp;Rita  
+            </p>
+        </div>
     </div>
 </section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#Page3",
+            toggleActions: "play pause resume reset",
+        }
+    });
+
+    tl.fromTo(
+        "#imgOrnament5A",
+        { opacity: 0, rotation: "+=20", x: "+=40" },
+        { opacity: 1, rotation: -10, x: 0, duration: 4 },
+        0
+    );
+
+    tl.fromTo(
+        "#imgOrnament5A",
+        { rotation: -10 }, 
+        {
+            rotation: 7,
+            duration: 10,
+            repeat: -1,
+            yoyo: true,
+            yoyoEase: "none",
+            ease: "none"
+        },
+        4
+    );
+
+    tl.fromTo(
+        "#imgOrnament5B",
+        { opacity: 0, rotation: "-=20", x: "-=40" },
+        { opacity: 0.85, rotation: 10, x: 0, duration: 4 },
+        0.5
+    );
+
+        tl.fromTo(
+        "#imgOrnament5B",
+        { rotation: 10 }, 
+        {
+            rotation: -7,
+            duration: 15,
+            repeat: -1,
+            yoyo: true,
+            yoyoEase: "none",
+            ease: "none"
+        },
+        4.5
+    );
+
+    tl.fromTo(
+        "#imgOrnament6",
+        { opacity: 0, y: "+=20" },
+        { opacity: 1, y: 0, duration: 8 },
+        0.25
+    );
+
+
+    tl.fromTo(
+        ".page3Content",
+        { opacity: 0, y: "+=40" },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            scrollTrigger: {
+                trigger: "#Page3",
+                toggleActions: "play pause resume reset",
+            },
+            stagger: 0.5
+        },
+        1.5
+    );
+
+</script>
