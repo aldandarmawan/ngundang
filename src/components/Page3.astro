@@ -7,46 +7,66 @@ import Ornament5B from "../assets/ornament-5b.gif";
 import Ornament6 from "../assets/ornament-6.gif";
 ---
 
-
-<section id="Page3" class="h-screen w-full flex justify-center overflow-hidden section">
+<section
+    id="Page3"
+    class="h-screen w-full flex justify-center overflow-hidden section"
+>
     <div class="w-xl relative flex items-center">
         <Image
             src={Ornament5A}
             alt="ornament-5a"
-            class="absolute -z-999 w-14/25 -right-4 top-2"
+            class="absolute -z-999 w-14/25 -right-4 top-2 imgOrnamentPage3"
             id="imgOrnament5A"
         />
 
         <Image
             src={Ornament5B}
             alt="ornament-5b"
-            class="absolute -z-999 w-14/25 -left-4 -bottom-2"
+            class="absolute -z-999 w-14/25 -left-4 -bottom-2 imgOrnamentPage3"
             id="imgOrnament5B"
         />
 
         <Image
             src={Ornament6}
             alt="ornament-6"
-            class="absolute -z-999 w-6/25 right-4 bottom-7"
+            class="absolute -z-999 w-6/25 right-4 bottom-7 imgOrnamentPage3"
             id="imgOrnament6"
         />
         <div class="max-w-5/6 mx-auto">
-            <Image src={Salam} alt="assalamu'alaikum" class="-mb-5 max-h-45 page3Content"/>
+            <Image
+                src={Salam}
+                alt="assalamu'alaikum"
+                class="-mb-5 max-h-45 page3Content"
+            />
             <p class="text-lg/5 text-center page3Content">
-                Tanpa mengurangi rasa hormat,<br>
-                turut mengundang<br>
-                Bapak/Ibu/Saudara/i ke acara<br>
+                Tanpa mengurangi rasa hormat,<br />
+                turut mengundang<br />
+                Bapak/Ibu/Saudara/i ke acara<br />
                 pernikahan kami.
             </p>
-            <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4 page3Content">Julia Krisna,&nbsp;S.T.</h1>
-            <h6 class="text-xl font-bold text-center page3Content">putri kedua dari</h6>
+            <h1
+                class="font-cursive text-3xl font-bold text-center text-secondary my-4 page3Content"
+            >
+                Julia Krisna,&nbsp;S.T.
+            </h1>
+            <h6 class="text-xl font-bold text-center page3Content">
+                putri kedua dari
+            </h6>
             <p class="text-lg text-center page3Content">
-                Bapak&nbsp;Gatot&nbsp;Alibasa,&nbsp;S.E. dan Ibu&nbsp;Suharyati,&nbsp;S.Pd.  
+                Bapak&nbsp;Gatot&nbsp;Alibasa,&nbsp;S.E. dan
+                Ibu&nbsp;Suharyati,&nbsp;S.Pd.
             </p>
-            <h1 class="font-cursive text-3xl font-bold text-center text-secondary my-4 page3Content">Muhammad Aldan Ihsan&nbsp;Darmawan,&nbsp;S.T.</h1>
-            <h6 class="text-xl font-bold text-center page3Content">putra pertama dari</h6>
+            <h1
+                class="font-cursive text-3xl font-bold text-center text-secondary my-4 page3Content"
+            >
+                Muhammad Aldan Ihsan&nbsp;Darmawan,&nbsp;S.T.
+            </h1>
+            <h6 class="text-xl font-bold text-center page3Content">
+                putra pertama dari
+            </h6>
             <p class="text-lg text-center page3Content">
-                Bapak&nbsp;Daniel&nbsp;Hermansyah,&nbsp;S.H.,&nbsp;M.Si. dan Ibu&nbsp;Dra.&nbsp;Linda&nbsp;Rita  
+                Bapak&nbsp;Daniel&nbsp;Hermansyah,&nbsp;S.H.,&nbsp;M.Si. dan
+                Ibu&nbsp;Dra.&nbsp;Linda&nbsp;Rita
             </p>
         </div>
     </div>
@@ -55,65 +75,68 @@ import Ornament6 from "../assets/ornament-6.gif";
 <script>
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
-    
+
     gsap.registerPlugin(ScrollTrigger);
 
     let tl = gsap.timeline({
         scrollTrigger: {
             trigger: "#Page3",
-            toggleActions: "play pause resume reset",
-        }
+
+        },
     });
 
     tl.fromTo(
         "#imgOrnament5A",
-        { opacity: 0, rotation: "+=20", x: "+=40" },
+        { opacity: 0, rotation: 20, x: 40 },
         { opacity: 1, rotation: -10, x: 0, duration: 4 },
-        0
+        0,
     );
 
     tl.fromTo(
         "#imgOrnament5A",
-        { rotation: -10 }, 
+        { rotation: -10, x: 0 },
         {
             rotation: 7,
+            x: 0,
             duration: 10,
             repeat: -1,
+            repeatRefresh: true,
             yoyo: true,
             yoyoEase: "none",
-            ease: "none"
+            ease: "none",
         },
-        4
+        4,
     );
 
     tl.fromTo(
         "#imgOrnament5B",
-        { opacity: 0, rotation: "-=20", x: "-=40" },
+        { opacity: 0, rotation: -20, x: -40 },
         { opacity: 0.85, rotation: 10, x: 0, duration: 4 },
-        0.5
+        0.5,
     );
 
-        tl.fromTo(
+    tl.fromTo(
         "#imgOrnament5B",
-        { rotation: 10 }, 
+        { rotation: 10, x: 0 },
         {
             rotation: -7,
+            x: 0,
             duration: 15,
             repeat: -1,
+            repeatRefresh: true,
             yoyo: true,
             yoyoEase: "none",
-            ease: "none"
+            ease: "none",
         },
-        4.5
+        4.5,
     );
 
     tl.fromTo(
         "#imgOrnament6",
         { opacity: 0, y: "+=20" },
         { opacity: 1, y: 0, duration: 8 },
-        0.25
+        0.25,
     );
-
 
     tl.fromTo(
         ".page3Content",
@@ -126,9 +149,27 @@ import Ornament6 from "../assets/ornament-6.gif";
                 trigger: "#Page3",
                 toggleActions: "play pause resume reset",
             },
-            stagger: 0.5
+            stagger: 0.5,
         },
-        1.5
+        1.5,
     );
 
+    gsap.utils.toArray(".imgOrnamentPage3").forEach((el: any) => {
+        ScrollTrigger.create({
+            trigger: "#Page3",
+            pin: el,
+            start: "top top",
+            end: () => `+=${window.innerHeight * 2}`,
+        });
+
+        gsap.to(el, {
+            scrollTrigger: {
+                trigger: "#Page4",
+                scrub: 1,
+                markers: true,
+                start: "top top",
+            },
+            y: "-100vh",
+        });
+    });
 </script>
