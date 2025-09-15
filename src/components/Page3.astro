@@ -81,7 +81,6 @@ import Ornament6 from "../assets/ornament-6.gif";
     let tl = gsap.timeline({
         scrollTrigger: {
             trigger: "#Page3",
-
         },
     });
 
@@ -138,20 +137,21 @@ import Ornament6 from "../assets/ornament-6.gif";
         0.25,
     );
 
-    tl.fromTo(
+    gsap.fromTo(
         ".page3Content",
         { opacity: 0, y: "+=40" },
         {
             opacity: 1,
             y: 0,
             duration: 1.5,
+            delay: 1.5,
             scrollTrigger: {
                 trigger: "#Page3",
                 toggleActions: "play pause resume reset",
             },
             stagger: 0.5,
         },
-        1.5,
+        // 1.5,
     );
 
     gsap.utils.toArray(".imgOrnamentPage3").forEach((el: any) => {
@@ -166,7 +166,7 @@ import Ornament6 from "../assets/ornament-6.gif";
             scrollTrigger: {
                 trigger: "#Page4",
                 scrub: 1,
-                markers: true,
+                markers: false,
                 start: "top top",
             },
             y: "-100vh",

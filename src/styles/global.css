@@ -53,3 +53,10 @@ body::-webkit-scrollbar {
     z-index: -999;
     opacity: 0;
 }
+
+.btn-icon {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: -0.125em;
+    display: inline;
+}
