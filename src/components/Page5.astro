@@ -2,8 +2,99 @@
 
 ---
 
-<section id="Page4" class="h-screen w-full flex justify-center overflow-hidden section">
-    <p>Page 5</p>
+<section
+    id="Page5"
+    class="h-screen flex justify-center overflow-hidden section"
+>
+    <div class="w-xl relative flex items-center">
+        <div class="w-full max-w-5/6 mx-auto">
+            <div class="my-20 text-center max-w-5/6 mx-auto">
+                <h6 class="font-cursive text-xl font-bold text-primary">akad nikah</h6>
+                <div class="columns-4">
+                    <div>
+                        <h5 id="page5HariAkad" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>hari</p>
+                    </div>
+                    <div>
+                        <h5 id="page5JamAkad" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>jam</p>
+                    </div>
+                    <div>
+                        <h5 id="page5MenitAkad" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>menit</p>
+                    </div>
+                    <div>
+                        <h5 id="page5DetikAkad" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>detik</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-20 text-center max-w-5/6 mx-auto">
+                <h6 class="font-cursive text-xl font-bold text-primary">resepsi pernikahan</h6>
+                <div class="columns-4">
+                       <div>
+                        <h5 id="page5HariResepsi" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>hari</p>
+                    </div>
+                    <div>
+                        <h5 id="page5JamResepsi" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>jam</p>
+                    </div>
+                    <div>
+                        <h5 id="page5MenitResepsi" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>menit</p>
+                    </div>
+                    <div>
+                        <h5 id="page5DetikResepsi" class="text-3xl font-bold text-tertiary">0</h5>
+                        <p>detik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<script></script>
+<script>
+    const akdDate = new Date(2025, 9, 3, 9, 0, 0, 0);
+    const resDate = new Date(2025, 9, 5, 10, 0, 0, 0);
+
+    let aT = 0, aD = 0, aH = 0, aM = 0, aS = 0;
+    let el_aD = document.getElementById("page5HariAkad") as HTMLElement,
+        el_aH = document.getElementById("page5JamAkad") as HTMLElement,
+        el_aM = document.getElementById("page5MenitAkad") as HTMLElement,
+        el_aS = document.getElementById("page5DetikAkad") as HTMLElement;
+
+    let rT = 0, rD = 0, rH = 0, rM = 0, rS = 0;
+    let el_rD = document.getElementById("page5HariResepsi") as HTMLElement,
+        el_rH = document.getElementById("page5JamResepsi") as HTMLElement,
+        el_rM = document.getElementById("page5MenitResepsi") as HTMLElement,
+        el_rS = document.getElementById("page5DetikResepsi") as HTMLElement;
+
+    setInterval(() => {
+        let curDate = new Date();
+        if(curDate <= akdDate) {
+            aT = akdDate.getTime() - curDate.getTime();
+            aD = Math.floor(aT / (1000 * 3600 * 24));
+            aH = Math.floor((aT - (aD * 1000 * 3600 * 24)) / (1000 * 3600));
+            aM = Math.floor((aT - (aD * 1000 * 3600 * 24) - (aH * 1000 * 3600)) / (1000 * 60));
+            aS = Math.floor((aT - (aD * 1000 * 3600 * 24) - (aH * 1000 * 3600) - (aM * 1000 * 60)) / (1000 ));
+            el_aD.textContent = `${aD}`;
+            el_aH.textContent = `${aH}`;
+            el_aM.textContent = `${aM}`;
+            el_aS.textContent = `${aS}`;
+        }
+
+        if(curDate <= resDate) {
+            rT = resDate.getTime() - curDate.getTime();
+            rD = Math.floor(rT / (1000 * 3600 * 24));
+            rH = Math.floor((rT - (rD * 1000 * 3600 * 24)) / (1000 * 3600));
+            rM = Math.floor((rT - (rD * 1000 * 3600 * 24) - (rH * 1000 * 3600)) / (1000 * 60));
+            rS = Math.floor((rT - (rD * 1000 * 3600 * 24) - (rH * 1000 * 3600) - (rM * 1000 * 60)) / (1000 ));
+            el_rD.textContent = `${rD}`;
+            el_rH.textContent = `${rH}`;
+            el_rM.textContent = `${rM}`;
+            el_rS.textContent = `${rS}`;
+        }
+    }, 1000)
+</script>

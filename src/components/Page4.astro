@@ -7,8 +7,9 @@
     class="h-screen w-full flex justify-center overflow-hidden section"
 >
     <div class="w-xl relative flex items-center">
+        <div id="borderPage4" class="border-t-1 border-primary w-full max-w-5/6 absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
         <div class="max-w-5/6 mx-auto">
-            <div class="text-center">
+            <div class="text-center mb-20">
                 <h6 class="page4TextA">akad nikah</h6>
                 <h1 class="font-cursive text-3xl page4TextA">Jumat, 3 Oktober 2025</h1>
                 <p class="font-bold mb-3 page4TextA">09:00 &mdash; selesai</p>
@@ -25,7 +26,7 @@
                 </div>
             </div>
 
-            <hr id="borderPage4" class="border-t-1 border-primary my-10">
+            <!-- <hr id="borderPage4" class="border-t-1 border-primary my-10"> -->
 
             <div class="text-center">
                 <h6 class="page4TextB">resepsi pernikahan</h6>
@@ -49,7 +50,7 @@
 </section>
 
 <script>
-        import { gsap } from "gsap";
+    import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     gsap.registerPlugin(ScrollTrigger);
@@ -79,7 +80,7 @@
         1.5
     );
 
-        tl.fromTo(
+    tl.fromTo(
         ".page4TextB",
         { opacity: 0, y: "+=40" },
         {
@@ -90,6 +91,23 @@
         },
         2.5
     );
+
+    ScrollTrigger.create({
+        trigger: "#Page4",
+        pin: "#borderPage4",
+        start: "top top",
+        end: () => `+=${window.innerHeight * 3}`,
+    });
+
+    gsap.to("#borderPage4", {
+        scrollTrigger: {
+            trigger: "#Page5",
+            scrub: true,
+            markers: false,
+            start: "top top",
+        },
+        y: "-100vh",
+    });
 
 
 </script>
