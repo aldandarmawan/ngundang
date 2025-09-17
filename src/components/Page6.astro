@@ -1,6 +1,16 @@
 ---
 import { Image } from "astro:assets";
 
+import Gallery1Thumb from "../assets/gallery/thumbnails/gallery-1.jpg";
+import Gallery2Thumb from "../assets/gallery/thumbnails/gallery-2.jpg";
+import Gallery3Thumb from "../assets/gallery/thumbnails/gallery-3.jpg";
+import Gallery4Thumb from "../assets/gallery/thumbnails/gallery-4.jpg";
+import Gallery5Thumb from "../assets/gallery/thumbnails/gallery-5.jpg";
+import Gallery6Thumb from "../assets/gallery/thumbnails/gallery-6.jpg";
+import Gallery7Thumb from "../assets/gallery/thumbnails/gallery-7.jpg";
+import Gallery8Thumb from "../assets/gallery/thumbnails/gallery-8.jpg";
+import Gallery9Thumb from "../assets/gallery/thumbnails/gallery-9.jpg";
+
 import Gallery1 from "../assets/gallery/gallery-1.jpg";
 import Gallery2 from "../assets/gallery/gallery-2.jpg";
 import Gallery3 from "../assets/gallery/gallery-3.jpg";
@@ -11,8 +21,7 @@ import Gallery7 from "../assets/gallery/gallery-7.jpg";
 import Gallery8 from "../assets/gallery/gallery-8.jpg";
 import Gallery9 from "../assets/gallery/gallery-9.jpg";
 
-import 'iv-viewer/dist/iv-viewer.css';
-
+import "iv-viewer/dist/iv-viewer.css";
 ---
 
 <section
@@ -21,45 +30,72 @@ import 'iv-viewer/dist/iv-viewer.css';
 >
     <div class="w-xl relative flex items-center">
         <div class="max-w-5/6 mx-auto">
-            <h1 class="text-center font-cursive mb-3 text-3xl text-secondary">Our Galleries</h1>
+            <h1 class="text-center font-cursive mb-3 text-3xl text-secondary">
+                Our Galleries
+            </h1>
             <div class="columns-3">
-            {
-                [Gallery1,Gallery4,Gallery7,Gallery2,Gallery5,Gallery8,Gallery3,Gallery6,Gallery9]
-                    .map((img, i) => (
+                {
+                    [
+                        [Gallery1, Gallery1Thumb],
+                        [Gallery4, Gallery4Thumb],
+                        [Gallery7, Gallery7Thumb],
+                        [Gallery2, Gallery2Thumb],
+                        [Gallery5, Gallery5Thumb],
+                        [Gallery8, Gallery8Thumb],
+                        [Gallery3, Gallery3Thumb],
+                        [Gallery6, Gallery6Thumb],
+                        [Gallery9, Gallery9Thumb],
+                    ].map(([img, itm], i) => (
                         <Image
-                            src={img}
-                            alt={ `Gallery #${i}` }
+                            src={itm}
+                            alt={`Gallery #${i}`}
                             class="aspect-square object-cover mb-3 hover:opacity-75 border border-secondary bg-gray-100 shadow-md p-2 rounded gallery-img"
-                            data-index={i}
+                            data-hires={img.src}
                         />
                     ))
-            }
+                }
             </div>
         </div>
     </div>
 </section>
 
 <script>
-
-    // function ViewImage(i: any) {
-    //     console.log('do view', i);
-    // }
-
     import { FullScreenViewer } from "iv-viewer";
-    // import 'iv-viewer/dist/iv-viewer.css';
- 
 
-    const imgs = document.querySelectorAll('.gallery-img');
+    const imgs = document.querySelectorAll(".gallery-img");
     const viewer = new FullScreenViewer();
     imgs.forEach((img) => {
-        img.addEventListener('click', () => {
+        img.addEventListener("click", () => {
             // const viewer = new FullScreenViewer()
-            let {src} = img as HTMLImageElement;
-            if(!!src) {
-
-                viewer.show(src);
+            let src = (img as HTMLImageElement).src;
+            let src_hires = img.getAttribute('data-hires');
+            if (!!src) {
+                viewer.show(src, src_hires || undefined);
             }
         });
     });
 
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(
+        ".gallery-img",
+        { opacity: 0, scale: 0 },
+        {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#Page6",
+            },
+            stagger: {
+                amount: 0.25,
+                grid: "auto",
+                axis: undefined,
+                from: "center",
+            },
+        },
+    );
 </script>
