@@ -14,7 +14,11 @@
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
     "gsap": "^3.12.7",
+    "iv-viewer": "^2.2.1",
     "sass": "^1.90.0",
     "tailwindcss": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/iv-viewer": "^2.0.3"
   }
 }

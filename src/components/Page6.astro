@@ -1,9 +1,65 @@
 ---
+import { Image } from "astro:assets";
+
+import Gallery1 from "../assets/gallery/gallery-1.jpg";
+import Gallery2 from "../assets/gallery/gallery-2.jpg";
+import Gallery3 from "../assets/gallery/gallery-3.jpg";
+import Gallery4 from "../assets/gallery/gallery-4.jpg";
+import Gallery5 from "../assets/gallery/gallery-5.jpg";
+import Gallery6 from "../assets/gallery/gallery-6.jpg";
+import Gallery7 from "../assets/gallery/gallery-7.jpg";
+import Gallery8 from "../assets/gallery/gallery-8.jpg";
+import Gallery9 from "../assets/gallery/gallery-9.jpg";
+
+import 'iv-viewer/dist/iv-viewer.css';
 
 ---
 
-<section id="Page6" class="h-screen w-full flex justify-center overflow-hidden section">
-    <p>Page 6</p>
+<section
+    id="Page6"
+    class="h-screen w-full flex justify-center overflow-hidden section"
+>
+    <div class="w-xl relative flex items-center">
+        <div class="max-w-5/6 mx-auto">
+            <h1 class="text-center font-cursive mb-3 text-3xl text-secondary">Our Galleries</h1>
+            <div class="columns-3">
+            {
+                [Gallery1,Gallery4,Gallery7,Gallery2,Gallery5,Gallery8,Gallery3,Gallery6,Gallery9]
+                    .map((img, i) => (
+                        <Image
+                            src={img}
+                            alt={ `Gallery #${i}` }
+                            class="aspect-square object-cover mb-3 hover:opacity-75 border border-secondary bg-gray-100 shadow-md p-2 rounded gallery-img"
+                            data-index={i}
+                        />
+                    ))
+            }
+            </div>
+        </div>
+    </div>
 </section>
 
-<script></script>
+<script>
+
+    // function ViewImage(i: any) {
+    //     console.log('do view', i);
+    // }
+
+    import { FullScreenViewer } from "iv-viewer";
+    // import 'iv-viewer/dist/iv-viewer.css';
+ 
+
+    const imgs = document.querySelectorAll('.gallery-img');
+    const viewer = new FullScreenViewer();
+    imgs.forEach((img) => {
+        img.addEventListener('click', () => {
+            // const viewer = new FullScreenViewer()
+            let {src} = img as HTMLImageElement;
+            if(!!src) {
+
+                viewer.show(src);
+            }
+        });
+    });
+
+</script>

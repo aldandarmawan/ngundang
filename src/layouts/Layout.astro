@@ -20,7 +20,7 @@ const { title } = Astro.props;
 			<slot />
 		</div>
 	</body>
-	<script>
+	<!-- <script>
 		import { gsap } from "gsap";
 		import { ScrollTrigger } from "gsap/ScrollTrigger";
 		import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -32,6 +32,7 @@ const { title } = Astro.props;
 		let scrollAmount = window.innerHeight;
 
 		function scrollToPage(pageIndex: number) {
+			// return;
 			let _sect = sections[pageIndex] as any;
 			gsap.to(window, {
 				scrollTo: {
@@ -105,7 +106,7 @@ const { title } = Astro.props;
 			currentPage = 1;
 			scrollToPage(currentPage);
 		});
-	</script>
+	</script> -->
 	<script>
 		import BG from "../assets/bg.gif";
 		const randWidth = () => {
