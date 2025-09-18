@@ -92,25 +92,4 @@
         2.5
     );
 
-    ScrollTrigger.create({
-        trigger: "#Page4",
-        pin: "#borderPage4",
-        start: "top top",
-        end: () => `+=${window.innerHeight * 2}`,
-    });
-
-    gsap.to("#borderPage4", {
-        scrollTrigger: {
-            trigger: "#Page5",
-            scrub: true,
-            markers: false,
-            start: "top top",
-            // end: () => `+=${window.innerHeight * 1}`,
-        },
-        y: "-100vh",
-        // display: "none"
-    })
-    .then(() => gsap.to("#borderPage4", { display: "none" }));
-
-
 </script>
