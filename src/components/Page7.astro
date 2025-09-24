@@ -1,6 +1,75 @@
+---
+import { Image } from "astro:assets";
+import AldanJulia2 from "../assets/aldanjulia2.png";
+---
+
 <section
     id="Page7"
     class="h-screen w-full flex justify-center overflow-hidden section"
 >
-Page 7
+    <div
+        class="w-xl relative flex items-center bg-contain bg-no-repeat bg-bottom outline-5 outline-secondary shadow-2xl shadow-primary text-center"
+        style={{ backgroundImage: `url(${AldanJulia2.src})` }}
+    >
+        <h1
+            class="font-cursive text-6xl -z-999 absolute top-1/6 left-1/2 mx-auto"
+            id="textPage7Title"
+            style="transform: translate(-50%,-50%)"
+        >
+            Our<br />Love&nbsp;Stories
+        </h1>
+        <!-- <div class="max-w-5/6 mx-auto text-center"></div> -->
+
+        <div
+            class="w-full max-w-5/6 left-1/2 top-1/2 flex absolute justify-between"
+            style="transform: translate(-50%, -50%)"
+        >
+            <a
+                href="javascript:void(0)"
+                class="font-brushes text-4xl text-center text-primary hover:opacity-75 hover:[&>*]:shadow-[0_0_50px_var(--color-quinary)]"
+            >
+                <span class="bg-quinary rounded">story&nbsp;by</span><br /><span
+                    class="bg-quinary rounded"><strong>JULIA</strong></span
+                >
+            </a>
+            <a
+                href="javascript:void(0)"
+                class="font-brushes text-4xl text-center text-primary hover:opacity-75 hover:[&>*]:shadow-[0_0_50px_var(--color-tertiary)]"
+            >
+                <spam class="bg-tertiary rounded">story&nbsp;by</spam><br
+                /><spam class="bg-tertiary rounded"><strong>ALDAN</strong></spam
+                >
+            </a>
+        </div>
+    </div>
 </section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(
+        "#textPage7Title",
+        { y: "75vh", opacity: 0 },
+        {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+                trigger: "#Page7",
+                scrub: 3,
+                markers: false,
+                start: "10% center",
+                end: "center center",
+            },
+            ease: "power2.out",
+        },
+    );
+
+    // let tl = gsap.timeline({
+    //     scrollTrigger: {
+    //         trigger: "#Page7"
+    //     }
+    // });
+</script>

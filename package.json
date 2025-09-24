@@ -9,8 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/db": "^0.18.0",
     "@fontsource-variable/alegreya": "^5.2.6",
     "@fontsource/great-vibes": "^5.2.6",
+    "@fontsource/love-ya-like-a-sister": "^5.2.8",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
     "gsap": "^3.12.7",
