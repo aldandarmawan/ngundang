@@ -15,6 +15,7 @@
     "@fontsource/love-ya-like-a-sister": "^5.2.8",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.3",
+    "flowbite": "^3.1.2",
     "gsap": "^3.12.7",
     "iv-viewer": "^2.2.1",
     "sass": "^1.90.0",

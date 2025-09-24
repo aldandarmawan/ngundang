@@ -26,7 +26,8 @@ import AldanJulia2 from "../assets/aldanjulia2.png";
         >
             <a
                 href="javascript:void(0)"
-                class="font-brushes text-4xl text-center text-primary hover:opacity-75 hover:[&>*]:shadow-[0_0_50px_var(--color-quinary)] active:opacity-75 active:[&>*]:shadow-[0_0_50px_var(--color-quinary)]"
+                class="font-brushes text-4xl text-center text-primary hover:opacity-75 hover:[&>*]:shadow-[0_0_50px_var(--color-quinary)] active:opacity-75 active:[&>*]:shadow-[0_0_50px_var(--color-quinary)] toggle-modal"
+                data-modal-storyby="julia"
             >
                 <span class="bg-quinary rounded">story&nbsp;by</span><br /><span
                     class="bg-quinary rounded"><strong>JULIA</strong></span
@@ -34,7 +35,8 @@ import AldanJulia2 from "../assets/aldanjulia2.png";
             </a>
             <a
                 href="javascript:void(0)"
-                class="font-brushes text-4xl text-center text-primary hover:opacity-75 hover:[&>*]:shadow-[0_0_50px_var(--color-tertiary)] active:opacity-75 active:[&>*]:shadow-[0_0_50px_var(--color-tertiary)]"
+                class="font-brushes text-4xl text-center text-primary hover:opacity-75 hover:[&>*]:shadow-[0_0_50px_var(--color-tertiary)] active:opacity-75 active:[&>*]:shadow-[0_0_50px_var(--color-tertiary)] toggle-modal"
+                data-modal-storyby="aldan"
             >
                 <spam class="bg-tertiary rounded">story&nbsp;by</spam><br
                 /><spam class="bg-tertiary rounded"><strong>ALDAN</strong></spam
@@ -43,6 +45,55 @@ import AldanJulia2 from "../assets/aldanjulia2.png";
         </div>
     </div>
 </section>
+
+<!-- Main modal -->
+<div
+    id="story-modal"
+    tabindex="-1"
+    aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+>
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow-sm">
+            <!-- Modal header -->
+            <div
+                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200"
+            >
+                <h3 class="text-2xl font-bold text-secondary font-cursive">
+                    Our Love Story
+                </h3>
+                <button
+                    type="button"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                    data-modal-hide="story-modal"
+                >
+                    <svg
+                        class="w-3 h-3"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 14"
+                    >
+                        <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div
+                class="px-4 md:px-5 py-8 space-y-4 text-lg leading-relaxed text-primary text-justify"
+                id="modal-content"
+            >
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     import { gsap } from "gsap";
@@ -72,4 +123,60 @@ import AldanJulia2 from "../assets/aldanjulia2.png";
     //         trigger: "#Page7"
     //     }
     // });
+</script>
+<script>
+    const storyData: { [storyBy: string]: string[] } = {
+        aldan: [
+            `“Hai, aku Julia, istri kamu dari masa depan.” Begitulah khayalan dialog yang kubayangkan ketika awal mula bertemu dengan Julia. Meskipun ini majas hiperbola, namun kurang-lebih aku merasakan hal demikian ketika aku melihat Julia. Entahlah, aku merasa ada sebuah kecocokan dengan Julia. Ada sebuah kenyamanan ketika bersama dengan Julia. Although she is <em>still a human being and having imperfections</em>, kekurangan tersebut seakan-akan klop dengan karakterku yang juga tak begitu sempurna dan akupun bisa memaklumi segala khilaf dan kekurangan yang dimiliki Julia. Mungkinkah ini kode dari alam bahwasanya “ini loh pasangan yang cocok buat kamu”, atau ini bagian dari skenario Allah.swt mengenai hidup yang aku jalani di dunia ini.`,
+            `Kenal dengan Julia sejak jadi Maba Teknik Elektro UNSRI tahun 2015. Awalnya sekedar tahu “Oh orang ini bakal jadi teman sekelasku nanti.” Apalagi Julia dulu termasuk primadona para cowok elektro. Gimana ya, karena memang secantik itu loh, hehee…. Dikarenakan hal tersebutlah siapa sih yang nggak kenal dengan Julia. Terus aku gimana? Aku sih awalnya nggak terlalu peduli sih. Toh dulu posisinya memang sudah punya pacar (yang obviously kini sudah masuk list mantan) dan aku bertekad di kampus maunya fokus belajar aja, nggak mau tebar pesona (cukuplah masa putih abu-abu yang jadi saksi bisu menyaksikan si Aldan mampu mencetak empat orang berstatus mantan pacar dan satu crush yang sempat “ditembak” namun ditolak).`,
+            `Singkat cerita, akhir Semester 2 aku semakin dekat dengan Julia. Padahal di awal-awal kuliah banyak cowok yang mencoba ngedeketin Julia, namun entah mengapa usaha para pria tampan tersebut berujung sia-sia dan malah Julianya deketnya dengan aku. Terima kasih kepada tugas video PKN yang menyatukan aku dan Julia dalam satu grup yang berujung makin intensnya komunikasi kami via chat.`,
+            `Ya, kayak kata orang, “jodoh tuh nggak kemana,” qodarullah di awal Oktober 2025 ini Insya Allah cinta kami dipersatukan dengan sebuah ikatan pernikahan. Jujurly aku dan Julia nggak ada sebuah “ikatan resmi” ala-ala cinta monyet remaja dengan Julia. Nggak ada istilah nembak, jadian, dll. Cuma sekedar aku sempat menyatakan “aku nih naksir samo kau woy” kepada Julia pada tanggal 30 Agustus 2016. Dikatakan pacaran, nggak juga. Di sisi lain tapi sayang heheee… Pontang-panting, anter sana-sini, bantuin doi kesana-kemari kok mau-mau aja. Tapi ya yang namanya cinta, apapun itu akan dilakukan. Sumpah aku nggak expect kalau endingnya bakal sama Julia. Apalagi selama sembilan tahun hubungan kami ini hanya sekedar jaga komunikasi dan sering-sering memberikan kabar. Beda banget apa yang aku rasakan ketika masa pacaran di bangku SMA dulu. Modal haha-hihi tautau jadi bini. Doakan kami ya gezz biar langgeng terus jadi pasangan serasi ‘till jannah heheheee…`,
+        ],
+        julia: [
+            `Lia dan Aldan pertama kali bertemu sebagai teman kuliah pada tahun 2015. Saat itu, hubungan mereka berjalan seperti teman pada umumnya &ndash; saling kenal, namun belum begitu dekat.`,
+            `Hingga pada tahun 2016, kedekatan mulai tumbuh ketika mereka tergabung dalam satu kelompok pada salah satu mata kuliah. Dari situlah hubungan mereka berkembang menjadi teman dekat. Mereka saling mendukung di tengah hiruk-pikuk dunia perkuliahan — mulai dari mengerjakan tugas bersama, berdiskusi hingga larut malam, hingga saling menyemangati menjelang ujian.`,
+            `Lulus kuliah bukanlah akhir dari kebersamaan mereka. Meski menjalani jalan hidup masing-masing, komunikasi dan persahabatan tetap terjaga. Lia memulai kariernya pada tahun 2021, disusul oleh Aldan pada tahun 2022. Di tengah kesibukan masing-masing, mereka terus berbagi cerita, memberi semangat, dan saling mendoakan satu sama lain.`,
+            `Tahun 2023 dan 2024 menjadi masa pencarian. Keduanya mencoba membuka hati untuk orang lain, namun tidak ada yang terasa benar-benar tepat. Mungkin karena hati mereka telah lama terbiasa saling memahami, saling mengenal, dan tumbuh bersama dalam perjalanan yang penuh cerita.`,
+            `Hingga akhirnya, pada April 2025, Aldan memantapkan hati. Dengan niat tulus dan keyakinan yang kuat, ia datang ke rumah Lia untuk meminta izin serta restu dari kedua orang tua Lia — sebagai langkah awal menuju kehidupan yang lebih serius.`,
+            `Dan pada tanggal 10 Agustus 2025, dengan penuh harapan, cinta, dan didampingi keluarga besar, Aldan resmi melamar Lia untuk menjadi calon istrinya.`,
+            `Lalu, pada tanggal 3 Oktober 2025, Lia dan Aldan mengikat janji suci dalam sebuah pernikahan. Sebuah momen awal dari perjalanan baru — bukan lagi sebagai teman kuliah atau sahabat seperjuangan, melainkan sebagai pasangan hidup yang akan saling melengkapi dalam suka dan duka.`,
+            `Semoga langkah ini menjadi awal dari kehidupan yang penuh cinta, kebahagiaan, keberkahan, dan cerita-cerita indah yang tak pernah habis ditulis bersama.`,
+        ],
+    };
+    import { Modal } from "flowbite";
+    const $buttonElements: NodeList | null =
+        document.querySelectorAll(".toggle-modal");
+    const $modalElement: HTMLElement | null =
+        document.querySelector("#story-modal");
+    const $modalContentElement: HTMLElement | null =
+        document.querySelector("#modal-content");
+
+    // toggle the visibility of the modal when clicking on the button
+    if ($buttonElements && $modalContentElement) {
+        const modal = new Modal($modalElement, {
+            backdropClasses: "bg-primary/50 fixed inset-0 z-40",
+            onHide: () => {
+                $modalContentElement.innerHTML = "";
+            },
+        });
+
+        $buttonElements.forEach((element) => {
+            let btnEl = element as HTMLButtonElement;
+            element.addEventListener("click", () => {
+                let storyBy = btnEl.getAttribute("data-modal-storyby");
+                if (!storyBy) {
+                    return;
+                }
+                let storyParagraphs: string[] = storyData[storyBy] || [];
+                if (storyParagraphs.length > 0) {
+                    storyParagraphs.forEach((p) => {
+                        let _el = document.createElement("p");
+                        _el.innerHTML = p;
+                        $modalContentElement.appendChild(_el);
+                    });
+                }
+                modal.show();
+            });
+        });
+    }
 </script>
