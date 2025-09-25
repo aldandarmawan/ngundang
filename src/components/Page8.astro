@@ -1,0 +1,131 @@
+---
+const _BANKS = [
+    ['BANK MANDIRI', '1130016509808', 'MUHAMMAD ALDAN IHSAN DARMAW'],
+    ['BANK CENTRAL ASIA', '8573002154', 'JULIA KRISNA'],
+    ['BANK SYARIAH INDONESIA', '7205390035', 'MUHAMMAD ALDAN IHSAN DARMAWAN'],
+];
+const _ADDRS = `Komplek Persada, Jl. Piranha, Blok F1 No. 24 Indralaya Indah, Indralaya, Kab, Ogan Ilir`;
+---
+<section
+    id="Page8"
+    class="h-screen flex justify-center overflow-hidden section"
+>
+    <div class="w-xl relative flex">
+        <div class="w-full max-w-5/6 mx-auto py-15">
+            <div class="text-center mb-5">
+                <h1 class="font-cursive text-5xl text-secondary mb-3 font-semibold page8AnimElement">
+                    Wedding Gift?
+                </h1>
+                <p class="text-base text-primary page8AnimElement">
+                    Your presence is the only present we need (seriously!), but
+                    if you insist on spoiling us, you can check out our digital
+                    wishing well below!
+                </p>
+            </div>
+
+            <div class="columns-1">
+                {
+                    _BANKS.map(([bank, norek, namarek]) => (
+                        <div class="border border-secondary rounded my-2 p-3 page8AnimElement">
+                            <h4 class="text-lg font-bold text-secondary">{bank}</h4>
+                            <div class="flex">
+                                <p class="text-lg font-semibold text-primary">
+                                    {norek}
+                                </p>
+                                <button
+                                    type="button"
+                                    class="border border-primary hover:bg-primary [&>svg]:fill-primary hover:text-white hover:[&>svg]:fill-white text-primary text-base p-1 rounded mx-1 btn-copynorek"
+                                    data-norek={norek}
+                                >
+                                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M480 400L288 400C279.2 400 272 392.8 272 384L272 128C272 119.2 279.2 112 288 112L421.5 112C425.7 112 429.8 113.7 432.8 116.7L491.3 175.2C494.3 178.2 496 182.3 496 186.5L496 384C496 392.8 488.8 400 480 400zM288 448L480 448C515.3 448 544 419.3 544 384L544 186.5C544 169.5 537.3 153.2 525.3 141.2L466.7 82.7C454.7 70.7 438.5 64 421.5 64L288 64C252.7 64 224 92.7 224 128L224 384C224 419.3 252.7 448 288 448zM160 192C124.7 192 96 220.7 96 256L96 512C96 547.3 124.7 576 160 576L352 576C387.3 576 416 547.3 416 512L416 496L368 496L368 512C368 520.8 360.8 528 352 528L160 528C151.2 528 144 520.8 144 512L144 256C144 247.2 151.2 240 160 240L176 240L176 192L160 192z"/></svg>
+                                </button>
+                            </div>
+                            <p class="text-sm text-primary">a.n {namarek}</p>
+                        </div>
+                    ))
+                }
+            </div>
+            <p class="text-base text-primary text-center my-3 page8AnimElement">
+                or, for our traditional gift-givers, you can absolutely send a physical surprise our way!
+            </p>
+            <div class="border border-secondary rounded my-2 p-3 page8AnimElement">
+                <div class="flex">
+                    <h4 class="text-lg font-bold text-secondary">JULIA KRISNA</h4>
+                    <button
+                        type="button"
+                        class="border border-primary hover:bg-primary [&>svg]:fill-primary hover:text-white hover:[&>svg]:fill-white text-primary text-base p-1 rounded mx-1 btn-copynorek"
+                        data-norek={_ADDRS}
+                    >
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M480 400L288 400C279.2 400 272 392.8 272 384L272 128C272 119.2 279.2 112 288 112L421.5 112C425.7 112 429.8 113.7 432.8 116.7L491.3 175.2C494.3 178.2 496 182.3 496 186.5L496 384C496 392.8 488.8 400 480 400zM288 448L480 448C515.3 448 544 419.3 544 384L544 186.5C544 169.5 537.3 153.2 525.3 141.2L466.7 82.7C454.7 70.7 438.5 64 421.5 64L288 64C252.7 64 224 92.7 224 128L224 384C224 419.3 252.7 448 288 448zM160 192C124.7 192 96 220.7 96 256L96 512C96 547.3 124.7 576 160 576L352 576C387.3 576 416 547.3 416 512L416 496L368 496L368 512C368 520.8 360.8 528 352 528L160 528C151.2 528 144 520.8 144 512L144 256C144 247.2 151.2 240 160 240L176 240L176 192L160 192z"/></svg>
+                    </button>
+                </div>
+                <p class="text-primary">
+                    {_ADDRS}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div
+        data-popover
+        id="popover-clipboard"
+        role="tooltip"
+        class="absolute z-10 invisible inline-block w-64 text-sm text-primary transition-opacity duration-200 bg-quinary border border-secondary rounded-lg shadow-xs opacity-20"
+    >
+        <div class="px-3 py-2">
+            <p>copied to clipboard</p>
+        </div>
+        <div data-popper-arrow></div>
+    </div>
+</section>
+
+<script>
+    import { Popover } from "flowbite";
+    const _pop = document.getElementById('popover-clipboard');
+    const buttons = document.querySelectorAll(".btn-copynorek");
+
+    if (buttons.length > 0) {
+        buttons.forEach((btn) => {
+            let btnEl = btn as HTMLButtonElement;
+            btnEl.addEventListener("click", () => {
+                let txt = btnEl.getAttribute('data-norek');
+                if(txt != null) {
+                    navigator.clipboard.writeText(txt);
+                    // show alert
+
+                    const popover = new Popover(
+                        _pop,
+                        btnEl,
+                        {triggerType: "none", placement: "top"}
+                    );
+
+                    if(popover.isVisible()) {
+                        popover.hide();
+                    }
+                    popover.show();
+                }
+            });
+        });
+    }
+</script>
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(
+        ".page8AnimElement",
+        { opacity: 0, y: "+=40" },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.5,
+            scrollTrigger: {
+                trigger: "#Page8"
+            }
+        },
+    );
+
+</script>
