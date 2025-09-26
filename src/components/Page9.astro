@@ -1,3 +1,7 @@
+---
+
+---
+
 <section
     id="Page9"
     class="min-h-screen flex justify-center overflow-hidden section"
@@ -18,36 +22,112 @@
             </div>
 
             <div class="border border-secondary rounded my-3 p-3">
-                <input
-                    type="text"
-                    class="border border-secondary rounded w-full mb-2 bg-quaternary/10"
-                    placeholder="Nama"
-                />
-                <textarea
-                    class="border border-secondary rounded w-full mb-2 bg-quaternary/10"
-                    placeholder="Your sweetest wishes..."
-                    rows="3"></textarea>
-
-                <button
-                    class="bg-secondary hover:bg-primary hover:text-white text-quinary py-1 px-3 rounded-full cursor-pointer w-full"
+                <form
+                    method="POST"
+                    enctype="multipart/form-data"
+                    id="formWishes"
                 >
-                    Kirim
-                </button>
+                    <input
+                        type="text"
+                        class="border border-secondary rounded w-full mb-2 bg-quaternary/10"
+                        placeholder="Nama"
+                        name="nama"
+                    />
+                    <textarea
+                        class="border border-secondary rounded w-full mb-2 bg-quaternary/10"
+                        placeholder="Your sweetest wishes..."
+                        rows="3"
+                        name="pesan"></textarea>
+
+                    <button
+                        type="submit"
+                        class="bg-secondary hover:bg-primary hover:text-white text-quinary py-1 px-3 rounded-full cursor-pointer w-full"
+                    >
+                        Kirim
+                    </button>
+                </form>
             </div>
 
-            <div class="border border-secondary rounded my-3 p-3 h-4/9 overflow-y-scroll">
-                <div class="bg-background/50 rounded shadow-md p-2 mb-2 backdrop-blur-sm">
-                    <div class="mb-1">
-                        <h4 class="text-secondary text-base font-bold">Dodo Nugraha & Istri</h4>
-                        <h6 class="text-gray-500 text-xs">Kamis, 25 September 2025 22:30:00</h6>
-                    </div>
-                    <p class="text-primary text-sm">
-                        Selamat menempuh hidup baru mangcoy!!
-                    </p>
-                </div>
-
+            <div
+                class="border border-secondary rounded my-3 p-3 h-4/9 overflow-y-scroll"
+                id="contenWishes"
+            >
                 
             </div>
         </div>
     </div>
 </section>
+<script>
+    import { actions } from "astro:actions";
+    import { getActionContext } from "astro:actions";
+
+    const content = document.getElementById("contenWishes");
+    const contentHTML =(data: {
+        id: number,
+        nama: string,
+        pesan: string,
+        dibuat_pada: Date
+    }) => `
+<div class="bg-background/65 rounded shadow-md p-2 mb-2 backdrop-blur-sm">
+    <div class="mb-1">
+        <h4 class="text-secondary text-base font-bold">
+            ${data['nama'] || '-'}
+        </h4>
+        <h6 class="text-gray-500 text-xs">
+            ${data['dibuat_pada'].toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' })} ${data['dibuat_pada'].toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+        </h6>
+    </div>
+    <p class="text-primary text-sm">
+        ${data['pesan']}
+    </p>
+</div>
+    `
+    const form = document.getElementById(
+        "formWishes",
+    ) as HTMLFormElement | null;
+
+
+    async function LoadData() {
+        let data = await actions.getData({});
+        // console.log('loaded data', data);
+        if(content) {
+            content.innerHTML = data['data']?.reduce((a, dd) => ((dd['nama'] != null && dd['pesan'] != null) ? ((a += contentHTML(dd)), a) : a), '') || "";
+        }
+    }
+
+    window.onload = LoadData;
+
+    if (form) {
+        form.addEventListener("submit", async (ev) => {
+            ev.preventDefault();
+
+            let _fDat = new FormData(form);
+
+            let data = _fDat
+                .entries()
+                .reduce(
+                    (a, [k, v]) => ((a[k] = v), a),
+                    {} as { [key: string]: FormDataEntryValue },
+                );
+
+            try {
+                let result = await actions.save({
+                    nama: data["nama"].toString(),
+                    pesan: data["pesan"].toString(),
+                });
+
+                await LoadData();
+            } catch (error) {
+                console.error(error);
+            }
+
+            // fetch("/api/wishes", {
+            //     method: "POST",
+            //     body: JSON.stringify(data),
+            //     headers: {
+            //         "Content-type": "application/json; charset=UTF-8",
+            //     },
+            // });
+        });
+    }
+</script>

@@ -4,7 +4,6 @@ const GuestBook = defineTable({
   columns: {
     id: column.number({ primaryKey: true  }),
     nama: column.text(),
-    hadir: column.boolean(),
     pesan: column.text(),
     dibuat_pada: column.date({default: NOW})
   },
