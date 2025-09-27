@@ -27,3 +27,6 @@ pnpm-debug.log*
 # package-lock.json
 # Local Netlify folder
 .netlify
+
+
+astro.config.mjs*
