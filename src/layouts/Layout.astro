@@ -3,6 +3,7 @@ import "@fontsource-variable/alegreya";
 import "@fontsource/great-vibes";
 import "@fontsource/love-ya-like-a-sister";
 import "../styles/global.css";
+
 const { title } = Astro.props;
 ---
 
@@ -14,8 +15,22 @@ const { title } = Astro.props;
 		<!-- <meta name="generator" content={Astro.generator} /> -->
 		<!-- <meta name="generator"  /> -->
 		<title>{title}</title>
+		<style>
+			.noscroll {
+				height: 100%;
+				overflow: hidden;
+			}
+		</style>
 	</head>
 	<body>
+		<audio id="backgroundAudio" loop muted>
+			<source src="canon.mp3" type="audio/mpeg" />
+			<p>
+				if you're seeing this it means your browser doesn't support
+				audio. please use latest & modern browser for maximum
+				experience.
+			</p>
+		</audio>
 		<div id="falling-leaf"></div>
 		<div class="ngundang-container">
 			<slot />
@@ -108,6 +123,57 @@ const { title } = Astro.props;
 			scrollToPage(currentPage);
 		});
 	</script> -->
+
+	<script>
+		let isOpened = false;
+		import { gsap } from "gsap";
+		import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+		gsap.registerPlugin(ScrollToPlugin);
+
+		const sections = document.querySelectorAll(".section");
+		const btnOpenInvitation = document.querySelector("#btnOpenInvitation");
+		const audio = document.getElementById(
+			"backgroundAudio",
+		) as HTMLAudioElement | null;
+
+		btnOpenInvitation?.addEventListener("click", () => {
+			isOpened = true;
+			initIsInvitationOpened();
+			scrollToPage(1);
+
+			if (!!audio && audio.paused) {
+				audio.play();
+
+				if (audio.muted) {
+					audio.muted = false;
+				}
+			}
+		});
+
+		window.onload = initIsInvitationOpened;
+
+		function initIsInvitationOpened() {
+			if (isOpened) {
+				document.body.classList.remove("noscroll");
+			} else {
+				scrollToPage(0);
+				document.body.classList.add("noscroll");
+			}
+		}
+
+		async function scrollToPage(pageIndex: number) {
+			// return;
+			let _sect = sections[pageIndex] as any;
+			await gsap.to(window, {
+				scrollTo: {
+					y: _sect.offsetTop,
+					autoKill: false,
+				},
+				ease: "power2.inOut",
+				duration: 2,
+			});
+		}
+	</script>
 	<script>
 		import BG from "../assets/bg.gif";
 		const randWidth = () => {
