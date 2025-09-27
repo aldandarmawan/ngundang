@@ -14,7 +14,7 @@ export default defineConfig({
   },
 
   site: 'https://aldandarmawan.github.io',
-  base: '/ngundang',
+  // base: '/ngundang',
   integrations: [db()],
   adapter: netlify()
 });
