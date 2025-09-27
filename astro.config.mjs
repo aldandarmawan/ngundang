@@ -11,6 +11,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://aldandarmawan.github.io',
+  base: '/ngundang',
 
   integrations: [db()]
 });
