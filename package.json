@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/db": "^0.18.0",
+    "@astrojs/netlify": "^6.5.11",
     "@fontsource-variable/alegreya": "^5.2.6",
     "@fontsource/great-vibes": "^5.2.6",
     "@fontsource/love-ya-like-a-sister": "^5.2.8",
