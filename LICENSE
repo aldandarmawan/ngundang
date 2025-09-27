@@ -24,7 +24,7 @@ SOFTWARE.
 -------------------------------------------------------------------------------
 EXCEPTION: IMAGES AND GALLERY CONTENT
 
-All images, photos, and other media files located in the "gallery/" directory  
+All images, photos, and other media files located in the "src/assets/gallery/" directory  
 (or any subdirectory thereof) are NOT covered by the above license.  
 They remain the exclusive property of THe-Mangcoy and are protected by  
 copyright. These files may not be copied, modified, distributed, or used  
