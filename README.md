@@ -1,48 +1,87 @@
-# Astro Starter Kit: Basics
 
-```sh
-npm create astro@latest -- --template basics
+# ngundang - by THe-Mangcoy
+
+A **simple invitation project** project built with  
+[Astro](https://astro.build/) ⚡, [Tailwind CSS](https://tailwindcss.com/) 🎨, and [Flowbite](https://flowbite.com/) 🧩. Created with love ❤️
+
+---
+
+## ✨ Features
+- 🤖 I don't know, man. Just check it out by yourself!
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/aldandarmawan/ngundang.git
+cd ngundang
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### 2. Install dependencies
+```bash
+npm install
+```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 3. Run locally
+```bash
+npm run dev
+```
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+The site will be available at `http://localhost:4321` by default.
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+## 📂 Project Structure
 /
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+├── src/              # Astro source code
+│   └── assets/
+│       ├── gallery/  # Wedding gallery (private images not included)
+│       └── 1/        # Third Party Assets (not included)
+├── public/           # Public assets   
+├── LICENSE           # MIT license for code
+├── THIRD-PARTY-ASSETS.md
+└── README.md
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## 📜 License
 
-All commands are run from the root of the project, from a terminal:
+- **Code**: Licensed under the [MIT License](./LICENSE).  
+  You are free to use, copy, modify, and distribute the source code.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **Gallery Images**: All images in the `src/assets/gallery/` directory are **private** and **not licensed** for reuse.  
+  These remain the personal property of the project owner and may not be copied, redistributed, or modified without explicit permission.
 
-## 👀 Want to learn more?
+- **Third-Party Assets**: Some assets (fonts, music, or stock images) may be used under separate licenses.  
+  See [`THIRD-PARTY-ASSETS.md`](./THIRD-PARTY-ASSETS.md) for details and instructions on how to obtain them.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+## 🤝 Contributing
+Contributions are welcome!  
+If you’d like to improve the template, fix bugs, or add new features:
+
+1. Fork the repo  
+2. Create a feature branch  
+3. Commit your changes  
+4. Open a Pull Request 🎉  
+
+Please do **not** commit private or third-party licensed assets.
+
+---
+
+## 💡 Inspiration
+This project was inspired by my own wedding day at 3 October 2025,
+created as the forever love to my beautiful wife, Julia Krisna.
+With the goal of sharing knowledge and contributing back to the open-source community. ❤️
+
+---
+
+## 👤 Author
+Created by **THe-Mangcoy** <https://www.themangcoy.com> 
+For questions or feedback, feel free to open an issue or reach out.
+
+## 👀 Sneak Peak
+Wanna see it by yourself? Just check it out at https://ngundang.themangcoy.com
