@@ -34,7 +34,7 @@ The site will be available at `http://localhost:4321` by default.
 ---
 
 ## 📂 Project Structure
-/
+```
 ├── src/              # Astro source code
 │   └── assets/
 │       ├── gallery/  # Wedding gallery (private images not included)
@@ -43,6 +43,7 @@ The site will be available at `http://localhost:4321` by default.
 ├── LICENSE           # MIT license for code
 ├── THIRD-PARTY-ASSETS.md
 └── README.md
+```
 
 ---
 
