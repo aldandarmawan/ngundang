@@ -57,7 +57,7 @@
         </div>
     </div>
 </section>
-<script>
+<script >
     import { actions } from "astro:actions";
     import { getActionContext } from "astro:actions";
 
@@ -89,13 +89,13 @@
 
     async function LoadData() {
         let data = await actions.getData({});
-        // console.log('loaded data', data);
+        console.log('loaded data', data);
         if(content) {
             content.innerHTML = data['data']?.reduce((a, dd) => ((dd['nama'] != null && dd['pesan'] != null) ? ((a += contentHTML(dd)), a) : a), '') || "";
         }
     }
 
-    window.onload = LoadData;
+    document.addEventListener('DOMContentLoaded', LoadData);
 
     if (form) {
         form.addEventListener("submit", async (ev) => {
