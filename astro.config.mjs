@@ -7,6 +7,8 @@ import db from '@astrojs/db';
 
 import netlify from '@astrojs/netlify';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -16,5 +18,5 @@ export default defineConfig({
   site: 'https://aldandarmawan.github.io',
   // base: '/ngundang',
   integrations: [db()],
-  adapter: netlify()
+  adapter: vercel()
 });
