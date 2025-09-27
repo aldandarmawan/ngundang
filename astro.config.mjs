@@ -10,6 +10,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
+  site: 'https://aldandarmawan.github.io',
 
   integrations: [db()]
 });
