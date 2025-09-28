@@ -1,6 +1,6 @@
 import { defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
-import { db, GuestBook } from "astro:db";
+import { db, GuestBook, desc } from "astro:db";
 
 export const server = {
     save: defineAction({
@@ -30,7 +30,8 @@ export const server = {
         handler: async (input) => {
             const data = await db
                 .select()
-                .from(GuestBook);
+                .from(GuestBook)
+                .orderBy(desc(GuestBook.id));
 
             return data;
         }
